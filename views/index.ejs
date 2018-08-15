@@ -6,9 +6,13 @@
   </head>
   <body>
     <h1><%= title %></title>
-    <form action="POST">
+    <form action="/" method="post">
       <p>Enter Keyword:</p>
       <input type="text" name="keyword">
+      <input type="submit" value="Search">
     </form>
+    <% articles.forEach((article) => { %>
+      <div class="headline"><%= article %></div>
+    <% }) %>
   </body>
 </html>

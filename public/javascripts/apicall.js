@@ -1,23 +1,35 @@
 var request = require("request");
 require('dotenv').config()
 
-var options = { method: 'POST',
-  url: 'http://api.ft.com/content/search/v1',
-  json: true,
-  headers:
-   { 'X-Api-Key': process.env.X_API_KEY },
-  body: {
-  "queryString": "banks",
-  "resultContext": {
-    "aspects" :[ "title", "lifecycle", "location", "summary", "editorial"]
+module.exports = class ApiCall {
+  constructor() {
+    this._apikey = process.env.X_API_KEY
   }
- }
-};
 
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-  body.results[0].results.forEach((article) => {
-    console.log(article.title.title)
-  })
-  console.log(body.results[0].results[0].title.title);
-});
+  search(keyword) {
+  return new Promise((resolve, reject) => {
+    var options = {
+      method: 'POST',
+      url: 'http://api.ft.com/content/search/v1',
+      json: true,
+      headers: { 'X-Api-Key': this._apikey },
+      body: {
+      "queryString": keyword,
+      "resultContext": {
+        "aspects" :[ "title", "lifecycle", "location", "summary", "editorial"]}
+      }
+    };
+
+    var titles = [];
+
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+      body.results[0].results.forEach((article) => {
+        titles.push(article.title.title)
+      })
+      resolve(titles);
+      });
+    });
+  }
+
+}
