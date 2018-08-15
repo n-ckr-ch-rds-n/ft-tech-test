@@ -2,17 +2,20 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel="stylesheet" href="//www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^3,o-buttons@^3.0.0,o-header@^4.0.0" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></title>
+    <h1><%= title %></title></h1>
     <form action="/" method="post">
-      <p>Enter Keyword:</p>
-      <input type="text" name="keyword">
-      <input type="submit" value="Search">
+      <input class="searchbar" type="text" name="keyword" placeholder="Enter Keyword">
+      <input class="o-buttons o-buttons--big" type="submit" value="Search"></button>
     </form>
-    <% articles.forEach((article) => { %>
-      <div class="headline"><%= article %></div>
-    <% }) %>
+
+    <% if (articles.length > 0) { %>
+      <% articles.forEach((article) => { %>
+        <div class="headline"><%= article %></div>
+      <% }) %>
+    <% } %>
   </body>
 </html>

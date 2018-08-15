@@ -4,7 +4,7 @@ const ApiCall = require('../public/javascripts/apicall.js')
 const apicall = new ApiCall();
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'FT Search' });
+  res.render('index', { title: 'FT Search', articles: [] });
 });
 
 router.post('/', function(req, res, next) {
