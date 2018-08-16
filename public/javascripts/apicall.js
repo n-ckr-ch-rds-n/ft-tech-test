@@ -20,14 +20,18 @@ module.exports = class ApiCall {
       }
     };
 
-    var titles = [];
+    var articles = [];
 
     request(options, function (error, response, body) {
-      if (error) throw new Error(error);
+      if (error) {reject(new Error(error))};
       body.results[0].results.forEach((article) => {
-        titles.push(article.title.title)
+        var item = {};
+        item.title = article.title.title;
+        item.url = article.location.uri;
+        item.date = article.lifecycle.initialPublishDateTime.slice(0,10);
+        articles.push(item)
       })
-      resolve(titles);
+      resolve(articles);
       });
     });
   }
