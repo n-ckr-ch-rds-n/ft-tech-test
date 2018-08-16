@@ -1,4 +1,4 @@
-chunkdata = function(array, chunksize) {
+module.exports.chunkdata = function(array, chunksize) {
   var chunkedarray = [];
   var chunksize = chunksize;
   var numberofchunks = array.length / chunksize;
@@ -13,10 +13,5 @@ chunkdata = function(array, chunksize) {
     }
 
   }
-  console.log(chunkedarray)
   return chunkedarray;
 }
-
-var testarray = [1,2,3,4,5,6,7,8,9,10];
-
-chunkdata(testarray, 5);
