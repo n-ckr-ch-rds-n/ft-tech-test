@@ -5,11 +5,17 @@ body {
 }
 
 h1 {
-  font-size: 8vw;
+  font-size: 6vw;
 }
 
 h2 {
   font-size: 3vw;
+}
+
+.headerimage {
+  width: 8%;
+  height: auto;
+  margin-right: 1%;
 }
 
 .headline {
