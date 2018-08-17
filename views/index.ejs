@@ -13,7 +13,8 @@
     </form>
 
     <% if (articles.length > 0) { %>
-      <% articles[0].forEach((article) => { %>
+      <h3>Search Results:</h3>
+      <% articles.forEach((article) => { %>
         <div class="headline"><a href=<%= article.url %>><%= article.title %></a>
           <div class="date"><%= article.date %></div>
         </div>

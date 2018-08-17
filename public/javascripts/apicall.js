@@ -1,5 +1,4 @@
 var request = require("request");
-var chunker = require("./chunkdata.js")
 require('dotenv').config()
 
 module.exports = class ApiCall {
@@ -32,7 +31,7 @@ module.exports = class ApiCall {
         item.date = article.lifecycle.initialPublishDateTime.slice(0,10);
         articles.push(item)
       })
-      resolve(chunker.chunkdata(articles, 50));
+      resolve(articles);
       });
     });
   }
