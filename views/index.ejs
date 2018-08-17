@@ -14,7 +14,8 @@
       <div data-o-grid-colspan="one-half">
         <div class="o-forms">
           <form action="/" method="post">
-	          <input type="text" id="o-forms-standard" class="o-forms__text" required name="keyword" placeholder="Enter Keyword">
+            <label aria-describedby="text-box-info" for="o-forms-standard" class="o-forms__label">Enter Keyword:</label>
+	          <input type="text" id="o-forms-standard" class="o-forms__text" required name="keyword">
             <input class="o-buttons o-buttons--primary" type="submit" value="Search">
             </form>
           </div>
@@ -23,7 +24,7 @@
     <div class="o-grid-row">
       <div data-o-grid-colspan="12">
         <% if (articles.length > 0) { %>
-          <h3>Search Results:</h3>
+          <h2>Search Results:</h2>
           <% articles.forEach((article) => { %>
             <div class="headline"><a href=<%= article.url %>><%= article.title %></a>
               <div class="date"><%= article.date %></div>
