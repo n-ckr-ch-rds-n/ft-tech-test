@@ -36,7 +36,7 @@ In keeping with the test instructions, the app is:
 * The site is entirely keyboard navigable
 * The contrast ratio is 19:1, easily in keeping with WCAG standards
 
-## Bonus Points
+### Bonus Points
 
 In addition, the app meets the following bonus criteria:
 1. It is built using Javascript and Node.js

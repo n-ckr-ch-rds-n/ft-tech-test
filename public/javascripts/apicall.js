@@ -1,14 +1,15 @@
-var request = require("request");
+const request = require("request");
 require('dotenv').config()
 
 module.exports = class ApiCall {
-  constructor() {
-    this._apikey = process.env.X_API_KEY
+  constructor(request = request) {
+    this._request = request;
+    this._apikey = process.env.X_API_KEY;
   }
 
   search(keyword) {
   return new Promise((resolve, reject) => {
-    var options = {
+    let options = {
       method: 'POST',
       url: 'http://api.ft.com/content/search/v1',
       json: true,
@@ -20,12 +21,12 @@ module.exports = class ApiCall {
       }
     };
 
-    var articles = [];
+    let articles = [];
 
-    request(options, function (error, response, body) {
+    this._request(options, function (error, response, body) {
       if (error) {reject(new Error(error))};
       body.results[0].results.forEach((article) => {
-        var item = {};
+        let item = {};
         item.title = article.title.title;
         item.url = article.location.uri;
         item.date = article.lifecycle.initialPublishDateTime.slice(0,10);
