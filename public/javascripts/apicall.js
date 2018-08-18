@@ -1,10 +1,9 @@
-const requestmodule = require("request");
+const request = require("request");
 const datahandler = require("./datahandler.js")
 require('dotenv').config()
 
 module.exports = class ApiCall {
-  constructor(request = requestmodule) {
-    this._request = request;
+  constructor() {
     this._apikey = process.env.X_API_KEY;
   }
 
@@ -24,7 +23,7 @@ module.exports = class ApiCall {
 
     let articles = [];
 
-    this._request(options, function (error, response, body) {
+    request(options, function (error, response, body) {
       if (error) {reject(new Error(error))};
       body.results[0].results.forEach((article) => {
         articles.push(datahandler.processArticle(article))

@@ -1,12 +1,20 @@
-const ApiCall = require('../public/javascripts/apicall.js')
+const ApiCall = require('../public/javascripts/apicall.js');
+const request = require("request");
+jest.mock('request');
 
-let mockRequest = jest.fn();
-
-let apicall = new ApiCall(mockRequest);
+let apicall = new ApiCall();
 
 describe('#search', function() {
-  it('makes an api request', function() {
+  it('calls the api', function() {
     apicall.search("brexit")
-    expect(mockRequest).toHaveBeenCalled();
+    expect(request).toHaveBeenCalled();
   })
+
+  it('passes data to callback', function() {
+    request.mockResolvedValue('data')
+    apicall.search('brexit').then(function(data) {
+      expect(data).toEqual('data')
+    })
+  })
+
 })
