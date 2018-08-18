@@ -1,5 +1,6 @@
 const ApiCall = require('../public/javascripts/apicall.js');
 const request = require("request");
+
 jest.mock('request');
 
 let apicall = new ApiCall();
@@ -17,4 +18,10 @@ describe('#search', function() {
     })
   })
 
+  it('catches api errors', function() {
+    request.mockImplementation(() => {throw 'error'});
+    apicall.search('brexit').catch(function(error) {
+      expect(error).toEqual('error')
+    })
+  })
 })
