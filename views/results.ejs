@@ -30,5 +30,17 @@
           </div>
       </div>
     </div>
+    <div class="o-grid-row">
+      <div data-o-grid-colspan="12">
+          <h2>Search Results:</h2>
+          <% if (articles.length > 0) { %>
+            <% articles.forEach((article) => { %>
+              <div class="headline"><a href=<%= article.url %>><%= article.title %></a>
+                <div class="date"><%= article.date %></div>
+              </div>
+          <% }) %>
+        <% } %>
+      </div>
+    </div>
   </body>
 </html>

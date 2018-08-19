@@ -30,10 +30,14 @@ module.exports = class ApiCall {
       if (error) {
         reject(new Error(error));
       }
-      body.results[0].results.forEach((article) => {
-        articles.push(datahandler.processArticle(article));
-      });
-      resolve(articles);
+      if (body.results[0].results != null) {
+        body.results[0].results.forEach((article) => {
+          articles.push(datahandler.processArticle(article));
+        });
+        resolve(articles);
+      } else {
+        resolve(articles);
+      }
       });
     });
   }

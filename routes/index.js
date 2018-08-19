@@ -5,14 +5,13 @@ const apicall = new ApiCall();
 
 router.get('/', function(req, res, next) {
   res.render('index', {
-    articles: [],
     title: 'FT Search'
   });
 });
 
 router.post('/', function(req, res, next) {
   apicall.search(req.body.keyword).then((articles) => {
-    res.render('index', {
+    res.render('results', {
       articles: articles,
       title: 'FT Search'
     });
