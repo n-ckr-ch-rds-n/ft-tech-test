@@ -8,7 +8,7 @@ The app is deployed on Heroku at https://ft-search-test.herokuapp.com/.
 
 To run it on your machine, clone this repo, run `npm install` to install the dependencies, then `npm start` and navigate to http://localhost:3000/ in your browser.
 
-Tests are written in Jest and are run with the `npm test` command.
+Tests are written in Jest and are run with the `jest` command.
 
 ### Test Requirements
 
@@ -34,7 +34,7 @@ In keeping with the test instructions, the app is:
 * Uses header tags in their proper order so as not to confuse screenreaders
 * Form field and button are clearly labelled
 * The site is entirely keyboard navigable
-* The contrast ratio is 19:1, easily in keeping with WCAG standards
+* The contrast ratio is 19:1, in keeping with WCAG standards
 
 ### Bonus Points
 
