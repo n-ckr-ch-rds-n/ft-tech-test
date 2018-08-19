@@ -4,7 +4,7 @@ self.addEventListener('install', event => {
   caches.open(currentCache).then(function(cache) {
   console.log("Adding content to cache.");
   return cache.addAll([
-  '../views/index_offline.ejs',
+  'index_offline.ejs',
   '/stylesheets/style.css'
   ]);
   })
@@ -17,7 +17,7 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       fetch(event.request).catch(error => {
         console.log("Page unavailable. Returning offline content.");
-        return caches.match('../views/index_offline.ejs');
+        return caches.match('index_offline.ejs');
       })
     );
   } else {

@@ -45,3 +45,6 @@ In addition, the app meets the following bonus criteria:
 4. It has a similar look and feel to ft.com
 5. It is performant over 3G networks
 6. It uses Origami components
+
+### Difficulties
+I have tried to get the  site to work offline using a service worker. While I have managed to register the service worker successfully, and to cache without errors, it doesn't seem to be able to serve the cached ejs file when offline. With more time I would seek to debug the service worker and implement offline functionality.
